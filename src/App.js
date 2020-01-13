@@ -1,17 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
 import md5 from 'md5'
+import {Router} from '@reach/router'
 import MarvelList from './pages/MarvelList'
+import HeroPage from './pages/HeroPage'
 
 const AppContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   background-color: #f2f2f2;
+  overflow-x: hidden;
 `
 
 class App extends React.Component {
   state = {
     data: {},
+    selectedElem: {
+      name: '',
+      description:'',
+      imgUrl: '',
+      comics: {},
+      series: {}
+    }
   }
 
   componentDidMount(){
@@ -26,10 +36,24 @@ class App extends React.Component {
     })
   }
 
+  handleElemClick = (el) => {
+    this.setState({ selectedElem: {
+      name: el.name,
+      description: el.description,
+      imgUrl: el.imgUrl,
+      comics: el.comics,
+      series: el.series,
+    }}, () => console.log(this.state.selectedElem))
+  }
+
   render(){
     return(
       <AppContainer>
-        <MarvelList data={this.state.data.results} />
+        <Router>
+          <MarvelList data={this.state.data.results} handleClick={this.handleElemClick} path="/" />
+          <HeroPage path="characters/:id" selectedHero={this.state.selectedElem} />
+        </Router>
+
       </AppContainer>
     )
   }

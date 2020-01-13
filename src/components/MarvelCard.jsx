@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Link} from '@reach/router'
 
-const Card = styled.a`
+const Card = styled(Link)`
   display: block;
   text-decoration: none;
   color: #1d1d1d;
@@ -59,15 +60,14 @@ const Card = styled.a`
   }
 `
 
-const MarvelCard = ({ name, img }) => {
+const MarvelCard = ({ name, imgUrl, id, onClick, description, comics, series }) => {
   return (
-    <Card href='#' img={img}>
+    <Card to={`characters/${id}`} img={imgUrl} onClick={() => onClick({ name, imgUrl, description, comics, series })} >
       <div className="profile-pic" />
       <div className="container-info">
         <div className="title"> {name} </div>
         <div className="viewmore"> view more </div>
       </div>
-
     </Card>
   )
 }

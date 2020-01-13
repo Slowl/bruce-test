@@ -9,13 +9,21 @@ const ListContainer = styled.div`
   width: 100vw;
 `
 
-const MarvelList = ({ data }) => {
+const MarvelList = ({ data, handleClick }) => {
 
   return (
     <ListContainer>
       {data && data.map(heroes => {
         return (
-          <MarvelCard key={heroes.id} name={heroes.name} img={heroes.thumbnail.path}/>
+          <MarvelCard
+            key={heroes.id}
+            name={heroes.name}
+            imgUrl={heroes.thumbnail.path}
+            description={heroes.description}
+            comics={heroes.comics}
+            series={heroes.series}
+            id={heroes.id}
+            onClick={handleClick} />
         )
       })}
     </ListContainer>
