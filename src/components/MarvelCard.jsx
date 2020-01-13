@@ -7,8 +7,8 @@ const Card = styled(Link)`
   text-decoration: none;
   color: #1d1d1d;
   background-color: #ffffff;
-  width: 280px;
-  height: 250px;
+  width: 320px;
+  height: 290px;
   margin: 1.2em;
   border-radius: 10px;
   transition: .3s;
