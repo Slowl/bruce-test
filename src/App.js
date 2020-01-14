@@ -39,7 +39,7 @@ class App extends React.Component {
     })
   }
 
-  nextResult = e => {
+  nextResult = () => {
     const ts = `${Date.now()}`
     const apikey = "41d8b2187390c7255bd3cd8c034bf8c3"
     const privatekey = "4656fb7bbef9379ebd1c6d5851dadc379160a6e2"
@@ -56,7 +56,7 @@ class App extends React.Component {
     })
   }
 
-  handleElemClick = (el) => {
+  handleElemClick = el => {
     this.setState({ selectedElem: {
       name: el.name,
       description: el.description,
